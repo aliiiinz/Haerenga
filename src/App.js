@@ -1055,7 +1055,7 @@ export default function App() {
                           </div>
                           <button onClick={()=>{setBizPlan(p.id);setBizTab("overview");
                             notify(`🏢 ${p.name} plan activated!`);}} style={{
-                            width:"100%",padding:"10px 0",borderRadius:R,border:"none",
+                            width:"100%",padding:"10px 0",borderRadius:R,
                             background:p.tag?P.sage:P.bg,
                             color:p.tag?"#fff":P.sage,
                             border:p.tag?"none":`1.5px solid ${P.sage}`,
