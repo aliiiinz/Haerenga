@@ -709,8 +709,7 @@ if(!session) return (
           </span>
         </div>
       </div>
-    </div>
-  </>
+    </>
 );  
   const [rides,    setRides]   = useState(RIDES);
   const [urgent,   setUrgent]  = useState(URGENT_SEED);
