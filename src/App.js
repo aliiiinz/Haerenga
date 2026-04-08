@@ -830,8 +830,8 @@ if(!session) return (
           </div>
           <div style={{display:"flex",gap:7}}>
             <Btn outline small onClick={()=>setUrg(true)}>🙏 Need help?</Btn>
-            <Btn outline small onClick={()=>supabase.auth.signOut()}>Sign out</Btn>
             <Btn small onClick={()=>setPost(true)}>+ Post</Btn>
+            <Btn outline small onClick={()=>supabase.auth.signOut()}>Sign out</Btn>
           </div>
         </div>
         <div style={{maxWidth:tab==="business"?980:560,margin:"0 auto",display:"flex",
