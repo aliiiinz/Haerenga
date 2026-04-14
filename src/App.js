@@ -24,14 +24,14 @@ input:focus,textarea:focus,select:focus{outline:2px solid ${P.sage};outline-offs
 `;
 
 const RIDES = [
-  {id:1,  drv:"Mia Torres",  av:"MT", fr:"Newtown",    to:"CBD",            t:"7:30 AM", s:2, cost:"split", pp:4.50, pr:4.8, vr:4.6, live:true,  km:6,  pro:true,  rec:true,  days:["Mon","Tue","Wed","Thu","Fri"], stu:false, music:"Passenger aux 🎤 · Pop, R&B"},
-  {id:2,  drv:"Jake Hollis", av:"JH", fr:"Parramatta", to:"Olympic Park",   t:"8:00 AM", s:1, cost:"free",  pp:0,    pr:4.2, vr:3.9, live:true,  km:9,  pro:false, rec:false, days:[], stu:false, music:"Silence is golden 🤫"},
-  {id:3,  drv:"Chen Wei",    av:"CW", fr:"Bondi",      to:"Surry Hills",    t:"8:15 AM", s:3, cost:"split", pp:5.00, pr:5.0, vr:4.9, live:false, km:8,  pro:true,  rec:true,  days:["Mon","Wed","Fri"], stu:false, music:"90s only, no skips 🎵"},
-  {id:4,  drv:"Sarah K.",    av:"SK", fr:"Penrith",    to:"Blacktown",      t:"7:45 AM", s:2, cost:"free",  pp:0,    pr:4.5, vr:4.0, live:true,  km:14, pro:false, rec:false, days:[], stu:false, music:"Kid-friendly vibes 🎈"},
-  {id:5,  drv:"Omar R.",     av:"OR", fr:"Chatswood",  to:"North Sydney",   t:"8:30 AM", s:1, cost:"fixed", pp:3.50, pr:3.8, vr:4.2, live:false, km:5,  pro:false, rec:false, days:[], stu:false, music:"True crime podcasts 😂"},
-  {id:6,  drv:"Lena Park",   av:"LP", fr:"Hornsby",    to:"Macquarie Uni",  t:"7:50 AM", s:3, cost:"split", pp:4.00, pr:4.9, vr:4.7, live:true,  km:11, pro:true,  rec:true,  days:["Mon","Tue","Wed","Thu","Fri"], stu:true,  music:"Passenger aux 🎤 · Indie, K-Pop"},
-  {id:7,  drv:"Priya S.",    av:"PS", fr:"Pukekohe",   to:"Auckland CBD",   t:"7:00 AM", s:2, cost:"split", pp:6.50, pr:4.7, vr:4.5, live:true,  km:52, pro:false, rec:true,  days:["Mon","Tue","Wed","Thu","Fri"], stu:false, music:"Classic rock 🤘"},
-  {id:8,  drv:"Tom W.",      av:"TW", fr:"Levin",      to:"Wellington CBD", t:"6:45 AM", s:3, cost:"split", pp:8.00, pr:4.6, vr:4.3, live:false, km:88, pro:false, rec:true,  days:["Mon","Wed","Fri"], stu:false, music:""},
+  {id:1,  drv:"Mia Torres",  av:"MT", fr:"Raglan",    to:"Hamilton CBD",            t:"7:30 AM", s:2, cost:"split", pp:4.50, pr:4.8, vr:4.6, live:true,  km:6,  pro:true,  rec:true,  days:["Mon","Tue","Wed","Thu","Fri"], stu:false, music:"Passenger aux 🎤 · Pop, R&B"},
+  {id:2,  drv:"Jake Hollis", av:"JH", fr:"Raglan", to:"Hamilton CBD",   t:"8:00 AM", s:1, cost:"free",  pp:0,    pr:4.2, vr:3.9, live:true,  km:9,  pro:false, rec:false, days:[], stu:false, music:"Silence is golden 🤫"},
+  {id:3,  drv:"Chen Wei",    av:"CW", fr:"Raglan",      to:"Te Rapa",    t:"8:15 AM", s:3, cost:"split", pp:5.00, pr:5.0, vr:4.9, live:false, km:8,  pro:true,  rec:true,  days:["Mon","Wed","Fri"], stu:false, music:"90s only, no skips 🎵"},
+  {id:4,  drv:"Sarah K.",    av:"SK", fr:"Whaingaroa",    to:"Waikato Uni",      t:"7:45 AM", s:2, cost:"free",  pp:0,    pr:4.5, vr:4.0, live:true,  km:14, pro:false, rec:false, days:[], stu:false, music:"Kid-friendly vibes 🎈"},
+  {id:5,  drv:"Omar R.",     av:"OR", fr:"Raglan",  to:"Frankton",   t:"8:30 AM", s:1, cost:"fixed", pp:3.50, pr:3.8, vr:4.2, live:false, km:5,  pro:false, rec:false, days:[], stu:false, music:"True crime podcasts 😂"},
+  {id:6,  drv:"Lena Park",   av:"LP", fr:"Raglan",    to:"Hamilton CBD",  t:"7:50 AM", s:3, cost:"split", pp:4.00, pr:4.9, vr:4.7, live:true,  km:11, pro:true,  rec:true,  days:["Mon","Tue","Wed","Thu","Fri"], stu:true,  music:"Passenger aux 🎤 · Indie, K-Pop"},
+  {id:7,  drv:"Priya S.",    av:"PS", fr:"Raglan",   to:"Hamilton CBD",   t:"7:00 AM", s:2, cost:"split", pp:6.50, pr:4.7, vr:4.5, live:true,  km:52, pro:false, rec:true,  days:["Mon","Tue","Wed","Thu","Fri"], stu:false, music:"Classic rock 🤘"},
+  {id:8,  drv:"Tom W.",      av:"TW", fr:"Te Uku",      to:"Hamilton CBD", t:"6:45 AM", s:3, cost:"split", pp:8.00, pr:4.6, vr:4.3, live:false, km:88, pro:false, rec:true,  days:["Mon","Wed","Fri"], stu:false, music:""},
 ];
 
 const URGENT_SEED = [
