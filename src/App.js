@@ -35,7 +35,7 @@ const RIDES = [
 ];
 
 const URGENT_SEED = [
-  {id:101, drv:"Alex Stone", av:"AS", fr:"Strathfield", to:"Central", t:"Now", s:1, cost:"free", pp:0, pr:4.4, vr:4.1, live:true, km:7, pro:false, rec:false, days:[], stu:false, music:"", urgent:true},
+  {id:101, drv:"Alex Stone", av:"AS", fr:"Raglan", to:"Hamilton CBD", t:"Now", s:1, cost:"free", pp:0, pr:4.4, vr:4.1, live:true, km:7, pro:false, rec:false, days:[], stu:false, music:"", urgent:true},
 ];
 
 // ── Tiny helpers ──────────────────────────────────────────────────────────────
