@@ -24,18 +24,18 @@ input:focus,textarea:focus,select:focus{outline:2px solid ${P.sage};outline-offs
 `;
 
 const RIDES = [
-  {id:1,  drv:"Mia Torres",  av:"MT", fr:"Newtown",    to:"CBD",            t:"7:30 AM", s:2, cost:"split", pp:4.50, pr:4.8, vr:4.6, live:true,  km:6,  pro:true,  rec:true,  days:["Mon","Tue","Wed","Thu","Fri"], stu:false, music:"Passenger aux 🎤 · Pop, R&B"},
-  {id:2,  drv:"Jake Hollis", av:"JH", fr:"Parramatta", to:"Olympic Park",   t:"8:00 AM", s:1, cost:"free",  pp:0,    pr:4.2, vr:3.9, live:true,  km:9,  pro:false, rec:false, days:[], stu:false, music:"Silence is golden 🤫"},
-  {id:3,  drv:"Chen Wei",    av:"CW", fr:"Bondi",      to:"Surry Hills",    t:"8:15 AM", s:3, cost:"split", pp:5.00, pr:5.0, vr:4.9, live:false, km:8,  pro:true,  rec:true,  days:["Mon","Wed","Fri"], stu:false, music:"90s only, no skips 🎵"},
-  {id:4,  drv:"Sarah K.",    av:"SK", fr:"Penrith",    to:"Blacktown",      t:"7:45 AM", s:2, cost:"free",  pp:0,    pr:4.5, vr:4.0, live:true,  km:14, pro:false, rec:false, days:[], stu:false, music:"Kid-friendly vibes 🎈"},
-  {id:5,  drv:"Omar R.",     av:"OR", fr:"Chatswood",  to:"North Sydney",   t:"8:30 AM", s:1, cost:"fixed", pp:3.50, pr:3.8, vr:4.2, live:false, km:5,  pro:false, rec:false, days:[], stu:false, music:"True crime podcasts 😂"},
-  {id:6,  drv:"Lena Park",   av:"LP", fr:"Hornsby",    to:"Macquarie Uni",  t:"7:50 AM", s:3, cost:"split", pp:4.00, pr:4.9, vr:4.7, live:true,  km:11, pro:true,  rec:true,  days:["Mon","Tue","Wed","Thu","Fri"], stu:true,  music:"Passenger aux 🎤 · Indie, K-Pop"},
-  {id:7,  drv:"Priya S.",    av:"PS", fr:"Pukekohe",   to:"Auckland CBD",   t:"7:00 AM", s:2, cost:"split", pp:6.50, pr:4.7, vr:4.5, live:true,  km:52, pro:false, rec:true,  days:["Mon","Tue","Wed","Thu","Fri"], stu:false, music:"Classic rock 🤘"},
-  {id:8,  drv:"Tom W.",      av:"TW", fr:"Levin",      to:"Wellington CBD", t:"6:45 AM", s:3, cost:"split", pp:8.00, pr:4.6, vr:4.3, live:false, km:88, pro:false, rec:true,  days:["Mon","Wed","Fri"], stu:false, music:""},
+  {id:1,  drv:"Sarah K.",    av:"SK", fr:"Raglan",    to:"Hamilton CBD",  t:"7:30 AM", s:2, cost:"split", pp:4.50, pr:4.8, vr:4.6, live:true,  km:48, pro:true,  rec:true,  days:["Mon","Tue","Wed","Thu","Fri"], stu:false, music:"Passenger aux 🎤 · Pop, R&B"},
+  {id:2,  drv:"Mike T.",     av:"MT", fr:"Raglan",    to:"Hamilton CBD",  t:"7:00 AM", s:1, cost:"free",  pp:0,    pr:4.2, vr:3.9, live:true,  km:48, pro:false, rec:false, days:[], stu:false, music:"Silence is golden 🤫"},
+  {id:3,  drv:"Aroha W.",    av:"AW", fr:"Raglan",    to:"Te Rapa",       t:"7:45 AM", s:3, cost:"split", pp:5.00, pr:5.0, vr:4.9, live:false, km:52, pro:true,  rec:true,  days:["Mon","Wed","Fri"], stu:false, music:"90s only, no skips 🎵"},
+  {id:4,  drv:"James R.",    av:"JR", fr:"Whaingaroa",to:"Waikato Uni",   t:"8:00 AM", s:2, cost:"free",  pp:0,    pr:4.5, vr:4.0, live:true,  km:50, pro:false, rec:false, days:[], stu:true,  music:"Chill study vibes ☕"},
+  {id:5,  drv:"Mere P.",     av:"MP", fr:"Raglan",    to:"Frankton",      t:"8:30 AM", s:1, cost:"fixed", pp:5.00, pr:3.8, vr:4.2, live:false, km:45, pro:false, rec:false, days:[], stu:false, music:"True crime podcasts 😂"},
+  {id:6,  drv:"Dave H.",     av:"DH", fr:"Raglan",    to:"Hamilton CBD",  t:"7:15 AM", s:3, cost:"split", pp:4.00, pr:4.9, vr:4.7, live:true,  km:48, pro:true,  rec:true,  days:["Mon","Tue","Wed","Thu","Fri"], stu:false, music:"Passenger aux 🎤 · Classic rock"},
+  {id:7,  drv:"Tane M.",     av:"TM", fr:"Raglan",    to:"Hamilton CBD",  t:"6:45 AM", s:2, cost:"split", pp:4.50, pr:4.7, vr:4.5, live:true,  km:48, pro:false, rec:true,  days:["Mon","Tue","Wed","Thu","Fri"], stu:false, music:"Classic rock 🤘"},
+  {id:8,  drv:"Lisa F.",     av:"LF", fr:"Te Uku",    to:"Hamilton CBD",  t:"7:30 AM", s:3, cost:"split", pp:3.50, pr:4.6, vr:4.3, live:false, km:44, pro:false, rec:true,  days:["Mon","Wed","Fri"], stu:false, music:""},
 ];
 
 const URGENT_SEED = [
-  {id:101, drv:"Alex Stone", av:"AS", fr:"Strathfield", to:"Central", t:"Now", s:1, cost:"free", pp:0, pr:4.4, vr:4.1, live:true, km:7, pro:false, rec:false, days:[], stu:false, music:"", urgent:true},
+  {id:101, drv:"Alex S.", av:"AS", fr:"Raglan", to:"Hamilton CBD", t:"Now", s:1, cost:"free", pp:0, pr:4.4, vr:4.1, live:true, km:48, pro:false, rec:false, days:[], stu:false, music:"", urgent:true},
 ];
 
 // ── Tiny helpers ──────────────────────────────────────────────────────────────
@@ -671,18 +671,30 @@ export default function App() {
   const [isStu,    setStuV]    = useState(false);
   const [toast,    setToast]   = useState(null);
   // Business state
-  const [bizPlan,  setBizPlan]  = useState(null); // null | "starter" | "growth" | "enterprise"
+  const [bizPlan,  setBizPlan]  = useState(null);
   const [bizBilling, setBizBilling] = useState("monthly");
-  const [bizTab,   setBizTab]  = useState("overview"); // overview | team | esg | billing
+  const [bizTab,   setBizTab]  = useState("overview");
+  // Auth state
+  const [session,      setSession]      = useState(null);
+  const [authEmail,    setAuthEmail]    = useState("");
+  const [authPassword, setAuthPassword] = useState("");
+  const [authMode,     setAuthMode]     = useState("login");
+  const [authLoading,  setAuthLoading]  = useState(false);
 
   const notify = msg => { setToast(msg); setTimeout(()=>setToast(null),3000); };
 
   useEffect(()=>{
+    supabase.auth.getSession().then(({data:{session}})=>setSession(session));
+    const {data:{subscription}} = supabase.auth.onAuthStateChange((_,s)=>setSession(s));
+    return ()=>subscription.unsubscribe();
+  },[]);
+
+  useEffect(()=>{
     const t = setTimeout(()=>{
-      setRides(r=>[{id:99,drv:"Dana Lee",av:"DL",fr:"Mt Eden",to:"Britomart",
-        t:"Now",s:2,cost:"free",pp:0,pr:4.6,vr:4.3,live:true,km:5,
+      setRides(r=>[{id:99,drv:"Dana Lee",av:"DL",fr:"Raglan",to:"Hamilton CBD",
+        t:"Now",s:2,cost:"free",pp:0,pr:4.6,vr:4.3,live:true,km:48,
         pro:false,rec:false,days:[],stu:true,music:"Passenger aux 🎤 · Indie"},...r]);
-      notify("🌿 Dana posted a free ride: Mt Eden → Britomart");
+      notify("🌿 Dana just posted a free ride: Raglan → Hamilton!");
     },14000);
     return()=>clearTimeout(t);
   },[]);
@@ -740,27 +752,6 @@ export default function App() {
     notify("🙏 Request sent to nearby drivers");
   };
 
-  const TABS = [
-    {id:"find",    label:"Find"},
-    {id:"impact",  label:"Impact"},
-    {id:"booked",  label:booked.length?`Booked · ${booked.length}`:"Booked"},
-    {id:"profile", label:"Profile"},
-    {id:"business",   label:"🏢 Business"},
-  ];
-
-  // ── Auth ──────────────────────────────────────────────────────────────────
-  const [session,      setSession]      = useState(null);
-  const [authEmail,    setAuthEmail]    = useState("");
-  const [authPassword, setAuthPassword] = useState("");
-  const [authMode,     setAuthMode]     = useState("login");
-  const [authLoading,  setAuthLoading]  = useState(false);
-
-  useEffect(()=>{
-    supabase.auth.getSession().then(({data:{session}})=>setSession(session));
-    const {data:{subscription}} = supabase.auth.onAuthStateChange((_,session)=>setSession(session));
-    return ()=>subscription.unsubscribe();
-  },[]);
-
   const handleAuth = async () => {
     setAuthLoading(true);
     if(authMode==="login"){
@@ -810,6 +801,40 @@ export default function App() {
       </div>
     </>
   );
+
+  const TABS = [
+    {id:"find",    label:"Find"},
+    {id:"impact",  label:"Impact"},
+    {id:"booked",  label:booked.length?`Booked · ${booked.length}`:"Booked"},
+    {id:"profile", label:"Profile"},
+    {id:"business",   label:"🏢 Business"},
+  ];
+
+  // ── Auth ──────────────────────────────────────────────────────────────────
+  const [session,      setSession]      = useState(null);
+  const [authEmail,    setAuthEmail]    = useState("");
+  const [authPassword, setAuthPassword] = useState("");
+  const [authMode,     setAuthMode]     = useState("login");
+  const [authLoading,  setAuthLoading]  = useState(false);
+
+  useEffect(()=>{
+    supabase.auth.getSession().then(({data:{session}})=>setSession(session));
+    const {data:{subscription}} = supabase.auth.onAuthStateChange((_,session)=>setSession(session));
+    return ()=>subscription.unsubscribe();
+  },[]);
+
+  const handleAuth = async () => {
+    setAuthLoading(true);
+    if(authMode==="login"){
+      const {error} = await supabase.auth.signInWithPassword({email:authEmail,password:authPassword});
+      if(error) alert(error.message);
+    } else {
+      const {error} = await supabase.auth.signUp({email:authEmail,password:authPassword});
+      if(error) alert(error.message);
+      else alert("Check your email to confirm your account!");
+    }
+    setAuthLoading(false);
+  };
 
   return (
     <>
