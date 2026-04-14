@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { supabase } from "./supabase";
-
 const P = {
   bg:"#f4f0e8", paper:"#faf8f4", ink:"#1e1a14", sage:"#4a6741",
   sageL:"#e8ede6", stone:"#8c8278", pebble:"#c8c0b4", straw:"#c49a3c",
@@ -24,14 +23,14 @@ input:focus,textarea:focus,select:focus{outline:2px solid ${P.sage};outline-offs
 `;
 
 const RIDES = [
-  {id:1,  drv:"Mia Torres",  av:"MT", fr:"Newtown",    to:"CBD",            t:"7:30 AM", s:2, cost:"split", pp:4.50, pr:4.8, vr:4.6, live:true,  km:6,  pro:true,  rec:true,  days:["Mon","Tue","Wed","Thu","Fri"], stu:false, music:"Passenger aux 🎤 · Pop, R&B"},
-  {id:2,  drv:"Jake Hollis", av:"JH", fr:"Parramatta", to:"Olympic Park",   t:"8:00 AM", s:1, cost:"free",  pp:0,    pr:4.2, vr:3.9, live:true,  km:9,  pro:false, rec:false, days:[], stu:false, music:"Silence is golden 🤫"},
-  {id:3,  drv:"Chen Wei",    av:"CW", fr:"Bondi",      to:"Surry Hills",    t:"8:15 AM", s:3, cost:"split", pp:5.00, pr:5.0, vr:4.9, live:false, km:8,  pro:true,  rec:true,  days:["Mon","Wed","Fri"], stu:false, music:"90s only, no skips 🎵"},
-  {id:4,  drv:"Sarah K.",    av:"SK", fr:"Penrith",    to:"Blacktown",      t:"7:45 AM", s:2, cost:"free",  pp:0,    pr:4.5, vr:4.0, live:true,  km:14, pro:false, rec:false, days:[], stu:false, music:"Kid-friendly vibes 🎈"},
-  {id:5,  drv:"Omar R.",     av:"OR", fr:"Chatswood",  to:"North Sydney",   t:"8:30 AM", s:1, cost:"fixed", pp:3.50, pr:3.8, vr:4.2, live:false, km:5,  pro:false, rec:false, days:[], stu:false, music:"True crime podcasts 😂"},
-  {id:6,  drv:"Lena Park",   av:"LP", fr:"Hornsby",    to:"Macquarie Uni",  t:"7:50 AM", s:3, cost:"split", pp:4.00, pr:4.9, vr:4.7, live:true,  km:11, pro:true,  rec:true,  days:["Mon","Tue","Wed","Thu","Fri"], stu:true,  music:"Passenger aux 🎤 · Indie, K-Pop"},
-  {id:7,  drv:"Priya S.",    av:"PS", fr:"Pukekohe",   to:"Auckland CBD",   t:"7:00 AM", s:2, cost:"split", pp:6.50, pr:4.7, vr:4.5, live:true,  km:52, pro:false, rec:true,  days:["Mon","Tue","Wed","Thu","Fri"], stu:false, music:"Classic rock 🤘"},
-  {id:8,  drv:"Tom W.",      av:"TW", fr:"Levin",      to:"Wellington CBD", t:"6:45 AM", s:3, cost:"split", pp:8.00, pr:4.6, vr:4.3, live:false, km:88, pro:false, rec:true,  days:["Mon","Wed","Fri"], stu:false, music:""},
+  {id:1,  drv:"Sarah K.",    av:"SK", fr:"Raglan",   to:"Hamilton CBD",   t:"7:30 AM", s:2, cost:"split", pp:4.50, pr:4.8, vr:4.6, live:true,  km:48, pro:true,  rec:true,  days:["Mon","Tue","Wed","Thu","Fri"], stu:false, music:"Passenger aux 🎤 · Pop, R&B"},
+  {id:2,  drv:"Mike T.",     av:"MT", fr:"Raglan",   to:"Hamilton CBD",   t:"7:00 AM", s:1, cost:"free",  pp:0,    pr:4.2, vr:3.9, live:true,  km:48, pro:false, rec:false, days:[], stu:false, music:"Silence is golden 🤫"},
+  {id:3,  drv:"Aroha W.",    av:"AW", fr:"Raglan",   to:"Te Rapa",        t:"7:45 AM", s:3, cost:"split", pp:5.00, pr:5.0, vr:4.9, live:false, km:52, pro:true,  rec:true,  days:["Mon","Wed","Fri"], stu:false, music:"90s only, no skips 🎵"},
+  {id:4,  drv:"James R.",    av:"JR", fr:"Whaingaroa",to:"Waikato Uni",   t:"8:00 AM", s:2, cost:"free",  pp:0,    pr:4.5, vr:4.0, live:true,  km:50, pro:false, rec:false, days:[], stu:true,  music:"Kid-friendly vibes 🎈"},
+  {id:5,  drv:"Mere P.",     av:"MP", fr:"Raglan",   to:"Frankton",       t:"8:30 AM", s:1, cost:"fixed", pp:5.00, pr:3.8, vr:4.2, live:false, km:45, pro:false, rec:false, days:[], stu:false, music:"True crime podcasts 😂"},
+  {id:6,  drv:"Dave H.",     av:"DH", fr:"Raglan",   to:"Hamilton CBD",   t:"7:15 AM", s:3, cost:"split", pp:4.00, pr:4.9, vr:4.7, live:true,  km:48, pro:true,  rec:true,  days:["Mon","Tue","Wed","Thu","Fri"], stu:false, music:"Passenger aux 🎤 · Classic rock"},
+  {id:7,  drv:"Tane M.",     av:"TM", fr:"Raglan",   to:"Hamilton CBD",   t:"6:45 AM", s:2, cost:"split", pp:4.50, pr:4.7, vr:4.5, live:true,  km:48, pro:false, rec:true,  days:["Mon","Tue","Wed","Thu","Fri"], stu:false, music:"Classic rock 🤘"},
+  {id:8,  drv:"Lisa F.",     av:"LF", fr:"Te Uku",   to:"Hamilton CBD",   t:"7:30 AM", s:3, cost:"split", pp:3.50, pr:4.6, vr:4.3, live:false, km:44, pro:false, rec:true,  days:["Mon","Wed","Fri"], stu:false, music:""},
 ];
 
 const URGENT_SEED = [
@@ -653,7 +652,66 @@ function ProfileTab({sub, wallet, isStu, booked, onUpgrade, onStudent, onTopUp})
 }
 
 // ── App ───────────────────────────────────────────────────────────────────────
-export default function App() {
+export default function App() {const [session, setSession] = useState(null);
+const [authEmail, setAuthEmail] = useState("");
+const [authPassword, setAuthPassword] = useState("");
+const [authMode, setAuthMode] = useState("login");
+const [authLoading, setAuthLoading] = useState(false);
+
+useEffect(()=>{
+  supabase.auth.getSession().then(({data:{session}})=>setSession(session));
+  supabase.auth.onAuthStateChange((_,session)=>setSession(session));
+},[]);
+
+const handleAuth = async () => {
+  setAuthLoading(true);
+  if(authMode==="login"){
+    const {error} = await supabase.auth.signInWithPassword({email:authEmail,password:authPassword});
+    if(error) alert(error.message);
+  } else {
+    const {error} = await supabase.auth.signUp({email:authEmail,password:authPassword});
+    if(error) alert(error.message);
+    else alert("Check your email to confirm your account!");
+  }
+  setAuthLoading(false);
+};
+
+if(!session) return (
+  <>
+    <style>{CSS}</style>
+    <div style={{minHeight:"100vh",background:P.bg,display:"flex",
+      alignItems:"center",justifyContent:"center",padding:20}}>
+      <div style={{background:P.paper,borderRadius:R+4,padding:32,width:340}}>
+        <div style={{textAlign:"center",marginBottom:24}}>
+          <div style={{fontSize:32,marginBottom:8}}>🌿</div>
+          <h1 style={{fontFamily:FD,fontSize:24,fontWeight:600,marginBottom:4}}>Haerenga</h1>
+          <p style={{color:P.stone,fontSize:13}}>Community carpooling for Aotearoa</p>
+        </div>
+        <div style={{marginBottom:12}}>
+          <input type="email" placeholder="Email address" value={authEmail}
+            onChange={e=>setAuthEmail(e.target.value)}
+            style={{...inputStyle,marginBottom:8}}/>
+          <input type="password" placeholder="Password" value={authPassword}
+            onChange={e=>setAuthPassword(e.target.value)}
+            style={inputStyle}/>
+        </div>
+        <button onClick={handleAuth} disabled={authLoading||!authEmail||!authPassword}
+          style={{width:"100%",padding:"11px 0",borderRadius:R,border:"none",
+            background:P.sage,color:"#fff",fontSize:14,fontWeight:600,
+            cursor:"pointer",marginBottom:12,opacity:authLoading?.7:1}}>
+          {authLoading?"Please wait...":(authMode==="login"?"Sign in":"Create account")}
+        </button>
+        <div style={{textAlign:"center",fontSize:13,color:P.stone}}>
+          {authMode==="login"?"Don't have an account? ":"Already have an account? "}
+          <span onClick={()=>setAuthMode(m=>m==="login"?"signup":"login")}
+            style={{color:P.sage,cursor:"pointer",fontWeight:500}}>
+            {authMode==="login"?"Sign up":"Sign in"}
+          </span>
+        </div>
+      </div>
+    </div>
+   </>
+);
   const [rides,    setRides]   = useState(RIDES);
   const [urgent,   setUrgent]  = useState(URGENT_SEED);
   const [tab,      setTab]     = useState("find");
@@ -747,69 +805,6 @@ export default function App() {
     {id:"profile", label:"Profile"},
     {id:"business",   label:"🏢 Business"},
   ];
-
-  // ── Auth ──────────────────────────────────────────────────────────────────
-  const [session,      setSession]      = useState(null);
-  const [authEmail,    setAuthEmail]    = useState("");
-  const [authPassword, setAuthPassword] = useState("");
-  const [authMode,     setAuthMode]     = useState("login");
-  const [authLoading,  setAuthLoading]  = useState(false);
-
-  useEffect(()=>{
-    supabase.auth.getSession().then(({data:{session}})=>setSession(session));
-    const {data:{subscription}} = supabase.auth.onAuthStateChange((_,session)=>setSession(session));
-    return ()=>subscription.unsubscribe();
-  },[]);
-
-  const handleAuth = async () => {
-    setAuthLoading(true);
-    if(authMode==="login"){
-      const {error} = await supabase.auth.signInWithPassword({email:authEmail,password:authPassword});
-      if(error) alert(error.message);
-    } else {
-      const {error} = await supabase.auth.signUp({email:authEmail,password:authPassword});
-      if(error) alert(error.message);
-      else alert("Check your email to confirm your account!");
-    }
-    setAuthLoading(false);
-  };
-
-  if(!session) return (
-    <>
-      <style>{CSS}</style>
-      <div style={{minHeight:"100vh",background:P.bg,display:"flex",
-        alignItems:"center",justifyContent:"center",padding:20}}>
-        <div style={{background:P.paper,borderRadius:R+4,padding:32,width:340}}>
-          <div style={{textAlign:"center",marginBottom:24}}>
-            <div style={{fontSize:32,marginBottom:8}}>🌿</div>
-            <h1 style={{fontFamily:FD,fontSize:24,fontWeight:600,marginBottom:4}}>Haerenga</h1>
-            <p style={{color:P.stone,fontSize:13}}>Community carpooling for Aotearoa</p>
-          </div>
-          <div style={{marginBottom:12}}>
-            <input type="email" placeholder="Email address" value={authEmail}
-              onChange={e=>setAuthEmail(e.target.value)}
-              style={{...inputStyle,marginBottom:8}}/>
-            <input type="password" placeholder="Password" value={authPassword}
-              onChange={e=>setAuthPassword(e.target.value)}
-              style={inputStyle}/>
-          </div>
-          <button onClick={handleAuth} disabled={authLoading||!authEmail||!authPassword}
-            style={{width:"100%",padding:"11px 0",borderRadius:R,border:"none",
-              background:P.sage,color:"#fff",fontSize:14,fontWeight:600,
-              cursor:"pointer",marginBottom:12,opacity:authLoading?.7:1}}>
-            {authLoading?"Please wait...":(authMode==="login"?"Sign in":"Create account")}
-          </button>
-          <div style={{textAlign:"center",fontSize:13,color:P.stone}}>
-            {authMode==="login"?"Don't have an account? ":"Already have an account? "}
-            <span onClick={()=>setAuthMode(m=>m==="login"?"signup":"login")}
-              style={{color:P.sage,cursor:"pointer",fontWeight:500}}>
-              {authMode==="login"?"Sign up":"Sign in"}
-            </span>
-          </div>
-        </div>
-      </div>
-    </>
-  );
 
   return (
     <>
