@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { supabase } from "./supabase";
+
 const P = {
   bg:"#f4f0e8", paper:"#faf8f4", ink:"#1e1a14", sage:"#4a6741",
   sageL:"#e8ede6", stone:"#8c8278", pebble:"#c8c0b4", straw:"#c49a3c",
@@ -652,65 +653,7 @@ function ProfileTab({sub, wallet, isStu, booked, onUpgrade, onStudent, onTopUp})
 }
 
 // ── App ───────────────────────────────────────────────────────────────────────
-export default function App() {const [session, setSession] = useState(null);
-const [authEmail, setAuthEmail] = useState("");
-const [authPassword, setAuthPassword] = useState("");
-const [authMode, setAuthMode] = useState("login");
-const [authLoading, setAuthLoading] = useState(false);
-
-useEffect(()=>{
-  supabase.auth.getSession().then(({data:{session}})=>setSession(session));
-  supabase.auth.onAuthStateChange((_,session)=>setSession(session));
-},[]);
-
-const handleAuth = async () => {
-  setAuthLoading(true);
-  if(authMode==="login"){
-    const {error} = await supabase.auth.signInWithPassword({email:authEmail,password:authPassword});
-    if(error) alert(error.message);
-  } else {
-    const {error} = await supabase.auth.signUp({email:authEmail,password:authPassword});
-    if(error) alert(error.message);
-    else alert("Check your email to confirm your account!");
-  }
-  setAuthLoading(false);
-};
-
-if(!session) return (
-  <>
-    <style>{CSS}</style>
-    <div style={{minHeight:"100vh",background:P.bg,display:"flex",
-      alignItems:"center",justifyContent:"center",padding:20}}>
-      <div style={{background:P.paper,borderRadius:R+4,padding:32,width:340}}>
-        <div style={{textAlign:"center",marginBottom:24}}>
-          <div style={{fontSize:32,marginBottom:8}}>🌿</div>
-          <h1 style={{fontFamily:FD,fontSize:24,fontWeight:600,marginBottom:4}}>Haerenga</h1>
-          <p style={{color:P.stone,fontSize:13}}>Community carpooling for Aotearoa</p>
-        </div>
-        <div style={{marginBottom:12}}>
-          <input type="email" placeholder="Email address" value={authEmail}
-            onChange={e=>setAuthEmail(e.target.value)}
-            style={{...inputStyle,marginBottom:8}}/>
-          <input type="password" placeholder="Password" value={authPassword}
-            onChange={e=>setAuthPassword(e.target.value)}
-            style={inputStyle}/>
-        </div>
-        <button onClick={handleAuth} disabled={authLoading||!authEmail||!authPassword}
-          style={{width:"100%",padding:"11px 0",borderRadius:R,border:"none",
-            background:P.sage,color:"#fff",fontSize:14,fontWeight:600,
-            cursor:"pointer",marginBottom:12,opacity:authLoading?.7:1}}>
-          {authLoading?"Please wait...":(authMode==="login"?"Sign in":"Create account")}
-        </button>
-        <div style={{textAlign:"center",fontSize:13,color:P.stone}}>
-          {authMode==="login"?"Don't have an account? ":"Already have an account? "}
-          <span onClick={()=>setAuthMode(m=>m==="login"?"signup":"login")}
-            style={{color:P.sage,cursor:"pointer",fontWeight:500}}>
-            {authMode==="login"?"Sign up":"Sign in"}
-          </span>
-        </div>
-      </div>
-    </div>
-);  
+export default function App() {
   const [rides,    setRides]   = useState(RIDES);
   const [urgent,   setUrgent]  = useState(URGENT_SEED);
   const [tab,      setTab]     = useState("find");
@@ -728,11 +671,23 @@ if(!session) return (
   const [isStu,    setStuV]    = useState(false);
   const [toast,    setToast]   = useState(null);
   // Business state
-  const [bizPlan,  setBizPlan]  = useState(null); // null | "starter" | "growth" | "enterprise"
+  const [bizPlan,  setBizPlan]  = useState(null);
   const [bizBilling, setBizBilling] = useState("monthly");
-  const [bizTab,   setBizTab]  = useState("overview"); // overview | team | esg | billing
+  const [bizTab,   setBizTab]  = useState("overview");
+  // Auth state
+  const [session,      setSession]      = useState(null);
+  const [authEmail,    setAuthEmail]    = useState("");
+  const [authPassword, setAuthPassword] = useState("");
+  const [authMode,     setAuthMode]     = useState("login");
+  const [authLoading,  setAuthLoading]  = useState(false);
 
   const notify = msg => { setToast(msg); setTimeout(()=>setToast(null),3000); };
+
+  useEffect(()=>{
+    supabase.auth.getSession().then(({data:{session}})=>setSession(session));
+    const {data:{subscription}} = supabase.auth.onAuthStateChange((_,s)=>setSession(s));
+    return ()=>subscription.unsubscribe();
+  },[]);
 
   useEffect(()=>{
     const t = setTimeout(()=>{
@@ -797,6 +752,56 @@ if(!session) return (
     notify("🙏 Request sent to nearby drivers");
   };
 
+  const handleAuth = async () => {
+    setAuthLoading(true);
+    if(authMode==="login"){
+      const {error} = await supabase.auth.signInWithPassword({email:authEmail,password:authPassword});
+      if(error) alert(error.message);
+    } else {
+      const {error} = await supabase.auth.signUp({email:authEmail,password:authPassword});
+      if(error) alert(error.message);
+      else alert("Check your email to confirm your account!");
+    }
+    setAuthLoading(false);
+  };
+
+  if(!session) return (
+    <>
+      <style>{CSS}</style>
+      <div style={{minHeight:"100vh",background:P.bg,display:"flex",
+        alignItems:"center",justifyContent:"center",padding:20}}>
+        <div style={{background:P.paper,borderRadius:R+4,padding:32,width:340}}>
+          <div style={{textAlign:"center",marginBottom:24}}>
+            <div style={{fontSize:32,marginBottom:8}}>🌿</div>
+            <h1 style={{fontFamily:FD,fontSize:24,fontWeight:600,marginBottom:4}}>Haerenga</h1>
+            <p style={{color:P.stone,fontSize:13}}>Community carpooling for Aotearoa</p>
+          </div>
+          <div style={{marginBottom:12}}>
+            <input type="email" placeholder="Email address" value={authEmail}
+              onChange={e=>setAuthEmail(e.target.value)}
+              style={{...inputStyle,marginBottom:8}}/>
+            <input type="password" placeholder="Password" value={authPassword}
+              onChange={e=>setAuthPassword(e.target.value)}
+              style={inputStyle}/>
+          </div>
+          <button onClick={handleAuth} disabled={authLoading||!authEmail||!authPassword}
+            style={{width:"100%",padding:"11px 0",borderRadius:R,border:"none",
+              background:P.sage,color:"#fff",fontSize:14,fontWeight:600,
+              cursor:"pointer",marginBottom:12,opacity:authLoading?.7:1}}>
+            {authLoading?"Please wait...":(authMode==="login"?"Sign in":"Create account")}
+          </button>
+          <div style={{textAlign:"center",fontSize:13,color:P.stone}}>
+            {authMode==="login"?"Don't have an account? ":"Already have an account? "}
+            <span onClick={()=>setAuthMode(m=>m==="login"?"signup":"login")}
+              style={{color:P.sage,cursor:"pointer",fontWeight:500}}>
+              {authMode==="login"?"Sign up":"Sign in"}
+            </span>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+
   const TABS = [
     {id:"find",    label:"Find"},
     {id:"impact",  label:"Impact"},
@@ -804,6 +809,32 @@ if(!session) return (
     {id:"profile", label:"Profile"},
     {id:"business",   label:"🏢 Business"},
   ];
+
+  // ── Auth ──────────────────────────────────────────────────────────────────
+  const [session,      setSession]      = useState(null);
+  const [authEmail,    setAuthEmail]    = useState("");
+  const [authPassword, setAuthPassword] = useState("");
+  const [authMode,     setAuthMode]     = useState("login");
+  const [authLoading,  setAuthLoading]  = useState(false);
+
+  useEffect(()=>{
+    supabase.auth.getSession().then(({data:{session}})=>setSession(session));
+    const {data:{subscription}} = supabase.auth.onAuthStateChange((_,session)=>setSession(session));
+    return ()=>subscription.unsubscribe();
+  },[]);
+
+  const handleAuth = async () => {
+    setAuthLoading(true);
+    if(authMode==="login"){
+      const {error} = await supabase.auth.signInWithPassword({email:authEmail,password:authPassword});
+      if(error) alert(error.message);
+    } else {
+      const {error} = await supabase.auth.signUp({email:authEmail,password:authPassword});
+      if(error) alert(error.message);
+      else alert("Check your email to confirm your account!");
+    }
+    setAuthLoading(false);
+  };
 
   return (
     <>
